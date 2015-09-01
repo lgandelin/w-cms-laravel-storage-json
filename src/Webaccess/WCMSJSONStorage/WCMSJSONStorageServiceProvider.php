@@ -1,6 +1,6 @@
 <?php
 
-namespace Webaccess\WCMSLaravel;
+namespace Webaccess\WCMSJSONStorage;
 
 use CMS\Context;
 use Illuminate\Support\ServiceProvider;
