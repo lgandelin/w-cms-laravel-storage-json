@@ -1,6 +1,6 @@
 <?php
 
-namespace Webaccess\WCMSJSONStorage\Repositories\Blocks;
+namespace Webaccess\WCMSLaravelStorageJSON\Repositories\Blocks;
 
 use CMS\Entities\Blocks\MediaBlock;
 

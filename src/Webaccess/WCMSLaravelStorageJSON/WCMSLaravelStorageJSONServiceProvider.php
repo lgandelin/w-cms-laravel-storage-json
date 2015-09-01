@@ -1,29 +1,29 @@
 <?php
 
-namespace Webaccess\WCMSJSONStorage;
+namespace Webaccess\WCMSLaravelStorageJSON;
 
 use CMS\Context;
 use Illuminate\Support\ServiceProvider;
-use Webaccess\WCMSJSONStorage\Repositories\Blocks\JSONBlockArticleListRepository;
-use Webaccess\WCMSJSONStorage\Repositories\Blocks\JSONBlockArticleRepository;
-use Webaccess\WCMSJSONStorage\Repositories\Blocks\JSONBlockHTMLRepository;
-use Webaccess\WCMSJSONStorage\Repositories\Blocks\JSONBlockMediaRepository;
-use Webaccess\WCMSJSONStorage\Repositories\Blocks\JSONBlockMenuRepository;
-use Webaccess\WCMSJSONStorage\Repositories\Blocks\JSONBlockViewRepository;
-use Webaccess\WCMSJSONStorage\Repositories\JSONAreaRepository;
-use Webaccess\WCMSJSONStorage\Repositories\JSONArticleCategoryRepository;
-use Webaccess\WCMSJSONStorage\Repositories\JSONArticleRepository;
-use Webaccess\WCMSJSONStorage\Repositories\JSONBlockRepository;
-use Webaccess\WCMSJSONStorage\Repositories\JSONBlockTypeRepository;
-use Webaccess\WCMSJSONStorage\Repositories\JSONLangRepository;
-use Webaccess\WCMSJSONStorage\Repositories\JSONMediaFormatRepository;
-use Webaccess\WCMSJSONStorage\Repositories\JSONMediaRepository;
-use Webaccess\WCMSJSONStorage\Repositories\JSONMenuItemRepository;
-use Webaccess\WCMSJSONStorage\Repositories\JSONMenuRepository;
-use Webaccess\WCMSJSONStorage\Repositories\JSONPageRepository;
-use Webaccess\WCMSJSONStorage\Repositories\JSONUserRepository;
+use Webaccess\WCMSLaravelStorageJSON\Repositories\Blocks\JSONBlockArticleListRepository;
+use Webaccess\WCMSLaravelStorageJSON\Repositories\Blocks\JSONBlockArticleRepository;
+use Webaccess\WCMSLaravelStorageJSON\Repositories\Blocks\JSONBlockHTMLRepository;
+use Webaccess\WCMSLaravelStorageJSON\Repositories\Blocks\JSONBlockMediaRepository;
+use Webaccess\WCMSLaravelStorageJSON\Repositories\Blocks\JSONBlockMenuRepository;
+use Webaccess\WCMSLaravelStorageJSON\Repositories\Blocks\JSONBlockViewRepository;
+use Webaccess\WCMSLaravelStorageJSON\Repositories\JSONAreaRepository;
+use Webaccess\WCMSLaravelStorageJSON\Repositories\JSONArticleCategoryRepository;
+use Webaccess\WCMSLaravelStorageJSON\Repositories\JSONArticleRepository;
+use Webaccess\WCMSLaravelStorageJSON\Repositories\JSONBlockRepository;
+use Webaccess\WCMSLaravelStorageJSON\Repositories\JSONBlockTypeRepository;
+use Webaccess\WCMSLaravelStorageJSON\Repositories\JSONLangRepository;
+use Webaccess\WCMSLaravelStorageJSON\Repositories\JSONMediaFormatRepository;
+use Webaccess\WCMSLaravelStorageJSON\Repositories\JSONMediaRepository;
+use Webaccess\WCMSLaravelStorageJSON\Repositories\JSONMenuItemRepository;
+use Webaccess\WCMSLaravelStorageJSON\Repositories\JSONMenuRepository;
+use Webaccess\WCMSLaravelStorageJSON\Repositories\JSONPageRepository;
+use Webaccess\WCMSLaravelStorageJSON\Repositories\JSONUserRepository;
 
-class WCMSJSONStorageServiceProvider extends ServiceProvider {
+class WCMSLaravelStorageJSONServiceProvider extends ServiceProvider {
 
     /**
      * Bootstrap the application services.

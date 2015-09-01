@@ -1,6 +1,6 @@
 <?php
 
-namespace Webaccess\WCMSJSONStorage\Repositories;
+namespace Webaccess\WCMSLaravelStorageJSON\Repositories;
 
 use CMS\Entities\Lang;
 use CMS\Repositories\LangRepositoryInterface;

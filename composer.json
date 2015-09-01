@@ -1,7 +1,7 @@
 {
-    "name": "webaccess/w-cms-json-storage",
+    "name": "webaccess/w-cms-laravel-storage-json",
     "type": "library",
-    "description": "W CMS - JSON storage",
+    "description": "W CMS - JSON storage for Laravel package",
     "authors": [
         {
             "name": "Louis Gandelin",
@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Webaccess\\WCMSJSONStorage\\": "src/"
+            "Webaccess\\WCMSLaravelStorageJSON\\": "src/"
         }
     },
     "minimum-stability": "dev"
