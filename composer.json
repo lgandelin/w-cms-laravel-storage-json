@@ -1,0 +1,20 @@
+{
+    "name": "webaccess/w-cms-json-storage",
+    "type": "library",
+    "description": "W CMS - JSON storage",
+    "authors": [
+        {
+            "name": "Louis Gandelin",
+            "email": "lgandelin@web-access.fr"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "autoload": {
+        "psr-0": {
+            "Webaccess\\WCMSJSONStorage\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
