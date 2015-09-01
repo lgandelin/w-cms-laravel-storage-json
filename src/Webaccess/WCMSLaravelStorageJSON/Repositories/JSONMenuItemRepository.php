@@ -36,6 +36,10 @@ class JSONMenuItemRepository implements MenuItemRepositoryInterface
             }
         }
 
+        usort($menuItems, function($a, $b) {
+            return ($a->getOrder() < $b->getOrder()) ? -1 : 1;
+        });
+
         return $menuItems;
     }
 

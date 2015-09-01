@@ -38,6 +38,10 @@ class JSONBlockRepository implements BlockRepositoryInterface
             }
         }
 
+        usort($blocks, function($a, $b) {
+            return ($a->getOrder() < $b->getOrder()) ? -1 : 1;
+        });
+
         return $blocks;
     }
 
