@@ -12,7 +12,7 @@ class JSONBlockRepository implements BlockRepositoryInterface
     function __construct()
     {
         $this->json = storage_path() . '/w-cms/blocks.json';
-        $this->counter = 1;
+        $this->counter = 0;
         $this->blocks = [];
 
         $this->loadFromJSON();
@@ -37,6 +37,10 @@ class JSONBlockRepository implements BlockRepositoryInterface
                 $blocks[]= $block;
             }
         }
+
+        usort($blocks, function($a, $b) {
+            return ($a->getOrder() < $b->getOrder()) ? -1 : 1;
+        });
 
         return $blocks;
     }

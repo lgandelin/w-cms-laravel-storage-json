@@ -10,7 +10,7 @@ class JSONArticleRepository implements ArticleRepositoryInterface
     public function __construct()
     {
         $this->json = storage_path() . '/w-cms/articles.json';
-        $this->counter = 1;
+        $this->counter = 0;
         $this->articles = [];
 
         $this->loadFromJSON();

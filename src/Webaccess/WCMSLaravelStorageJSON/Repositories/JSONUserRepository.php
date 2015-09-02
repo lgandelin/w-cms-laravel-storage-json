@@ -10,7 +10,7 @@ class JSONUserRepository implements UserRepositoryInterface
     public function __construct()
     {
         $this->json = storage_path() . '/w-cms/users.json';
-        $this->counter = 1;
+        $this->counter = 0;
         $this->users = [];
 
         $this->loadFromJSON();

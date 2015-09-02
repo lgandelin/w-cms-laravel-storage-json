@@ -10,7 +10,7 @@ class JSONMediaRepository implements MediaRepositoryInterface
     public function __construct()
     {
         $this->json = storage_path() . '/w-cms/medias.json';
-        $this->counter = 1;
+        $this->counter = 0;
         $this->medias = [];
 
         $this->loadFromJSON();
