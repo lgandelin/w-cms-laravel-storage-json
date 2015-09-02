@@ -7,9 +7,10 @@ use CMS\Repositories\ArticleRepositoryInterface;
 
 class JSONArticleRepository implements ArticleRepositoryInterface
 {
-    public function __construct()
+    public function __construct($jsonFolder)
     {
-        $this->json = storage_path() . '/w-cms/articles.json';
+        $this->jsonFolder = $jsonFolder;
+        $this->json = $this->jsonFolder . 'articles.json';
         $this->counter = 0;
         $this->articles = [];
 
@@ -119,6 +120,14 @@ class JSONArticleRepository implements ArticleRepositoryInterface
 
     private function loadFromJSON()
     {
+        if (!is_dir($this->jsonFolder)) {
+            mkdir($this->jsonFolder);
+        }
+
+        if (!file_exists($this->json)) {
+            file_put_contents($this->json, null);
+        }
+
         $string = file_get_contents($this->json);
         $data = json_decode($string, true);
 

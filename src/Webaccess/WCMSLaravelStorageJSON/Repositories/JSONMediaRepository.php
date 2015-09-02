@@ -7,9 +7,10 @@ use CMS\Repositories\MediaRepositoryInterface;
 
 class JSONMediaRepository implements MediaRepositoryInterface
 {
-    public function __construct()
+    public function __construct($jsonFolder)
     {
-        $this->json = storage_path() . '/w-cms/medias.json';
+        $this->jsonFolder = $jsonFolder;
+        $this->json = $this->jsonFolder . 'medias.json';
         $this->counter = 0;
         $this->medias = [];
 
@@ -82,6 +83,14 @@ class JSONMediaRepository implements MediaRepositoryInterface
 
     private function loadFromJSON()
     {
+        if (!is_dir($this->jsonFolder)) {
+            mkdir($this->jsonFolder);
+        }
+
+        if (!file_exists($this->json)) {
+            file_put_contents($this->json, null);
+        }
+
         $string = file_get_contents($this->json);
         $data = json_decode($string, true);
 
