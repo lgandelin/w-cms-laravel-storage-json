@@ -10,7 +10,7 @@ class JSONLangRepository implements LangRepositoryInterface
     public function __construct()
     {
         $this->json = storage_path() . '/w-cms/langs.json';
-        $this->counter = 1;
+        $this->counter = 0;
         $this->langs = [];
 
         $this->loadFromJSON();

@@ -10,7 +10,7 @@ class JSONAreaRepository implements AreaRepositoryInterface
     public function __construct()
     {
         $this->json = storage_path() . '/w-cms/areas.json';
-        $this->counter = 1;
+        $this->counter = 0;
         $this->areas = [];
 
         $this->loadFromJSON();

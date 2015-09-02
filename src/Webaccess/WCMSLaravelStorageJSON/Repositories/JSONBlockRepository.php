@@ -12,7 +12,7 @@ class JSONBlockRepository implements BlockRepositoryInterface
     function __construct()
     {
         $this->json = storage_path() . '/w-cms/blocks.json';
-        $this->counter = 1;
+        $this->counter = 0;
         $this->blocks = [];
 
         $this->loadFromJSON();

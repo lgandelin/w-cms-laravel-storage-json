@@ -10,7 +10,7 @@ class JSONMenuItemRepository implements MenuItemRepositoryInterface
     public function __construct()
     {
         $this->json = storage_path() . '/w-cms/menu_items.json';
-        $this->counter = 1;
+        $this->counter = 0;
         $this->menuItems = [];
 
         $this->loadFromJSON();

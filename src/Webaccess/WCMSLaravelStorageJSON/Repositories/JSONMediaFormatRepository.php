@@ -10,7 +10,7 @@ class JSONMediaFormatRepository implements MediaFormatRepositoryInterface
     public function __construct()
     {
         $this->json = storage_path() . '/w-cms/media_formats.json';
-        $this->counter = 1;
+        $this->counter = 0;
         $this->mediaFormats = [];
 
         $this->loadFromJSON();
