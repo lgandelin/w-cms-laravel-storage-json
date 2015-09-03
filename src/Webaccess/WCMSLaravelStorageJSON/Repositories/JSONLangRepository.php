@@ -2,8 +2,8 @@
 
 namespace Webaccess\WCMSLaravelStorageJSON\Repositories;
 
-use CMS\Entities\Lang;
-use CMS\Repositories\LangRepositoryInterface;
+use Webaccess\WCMSCore\Entities\Lang;
+use Webaccess\WCMSCore\Repositories\LangRepositoryInterface;
 
 class JSONLangRepository implements LangRepositoryInterface
 {

@@ -2,8 +2,8 @@
 
 namespace Webaccess\WCMSLaravelStorageJSON\Repositories;
 
-use CMS\Entities\Area;
-use CMS\Repositories\AreaRepositoryInterface;
+use Webaccess\WCMSCore\Entities\Area;
+use Webaccess\WCMSCore\Repositories\AreaRepositoryInterface;
 
 class JSONAreaRepository implements AreaRepositoryInterface
 {

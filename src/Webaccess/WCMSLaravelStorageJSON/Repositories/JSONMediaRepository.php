@@ -2,8 +2,8 @@
 
 namespace Webaccess\WCMSLaravelStorageJSON\Repositories;
 
-use CMS\Entities\Media;
-use CMS\Repositories\MediaRepositoryInterface;
+use Webaccess\WCMSCore\Entities\Media;
+use Webaccess\WCMSCore\Repositories\MediaRepositoryInterface;
 
 class JSONMediaRepository implements MediaRepositoryInterface
 {

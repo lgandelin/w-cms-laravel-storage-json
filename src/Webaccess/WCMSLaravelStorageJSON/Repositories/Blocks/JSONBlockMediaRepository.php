@@ -2,7 +2,7 @@
 
 namespace Webaccess\WCMSLaravelStorageJSON\Repositories\Blocks;
 
-use CMS\Entities\Blocks\MediaBlock;
+use Webaccess\WCMSCore\Entities\Blocks\MediaBlock;
 
 class JSONBlockMediaRepository
 {

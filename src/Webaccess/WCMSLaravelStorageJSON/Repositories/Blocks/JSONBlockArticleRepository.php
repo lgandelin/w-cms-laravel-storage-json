@@ -2,7 +2,7 @@
 
 namespace Webaccess\WCMSLaravelStorageJSON\Repositories\Blocks;
 
-use CMS\Entities\Blocks\ArticleBlock;
+use Webaccess\WCMSCore\Entities\Blocks\ArticleBlock;
 
 class JSONBlockArticleRepository
 {

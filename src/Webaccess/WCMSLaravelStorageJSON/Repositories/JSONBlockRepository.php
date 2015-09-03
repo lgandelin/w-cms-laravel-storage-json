@@ -2,9 +2,9 @@
 
 namespace Webaccess\WCMSLaravelStorageJSON\Repositories;
 
-use CMS\Context;
-use CMS\Entities\Block;
-use CMS\Repositories\BlockRepositoryInterface;
+use Webaccess\WCMSCore\Context;
+use Webaccess\WCMSCore\Entities\Block;
+use Webaccess\WCMSCore\Repositories\BlockRepositoryInterface;
 use ReflectionClass;
 
 class JSONBlockRepository implements BlockRepositoryInterface

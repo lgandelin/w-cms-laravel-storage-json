@@ -2,8 +2,8 @@
 
 namespace Webaccess\WCMSLaravelStorageJSON\Repositories;
 
-use CMS\Entities\User;
-use CMS\Repositories\UserRepositoryInterface;
+use Webaccess\WCMSCore\Entities\User;
+use Webaccess\WCMSCore\Repositories\UserRepositoryInterface;
 
 class JSONUserRepository implements UserRepositoryInterface
 {

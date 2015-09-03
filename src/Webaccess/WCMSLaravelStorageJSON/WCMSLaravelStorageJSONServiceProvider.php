@@ -2,8 +2,8 @@
 
 namespace Webaccess\WCMSLaravelStorageJSON;
 
-use CMS\Context;
 use Illuminate\Support\ServiceProvider;
+use Webaccess\WCMSCore\Context;
 use Webaccess\WCMSLaravelStorageJSON\Repositories\Blocks\JSONBlockArticleListRepository;
 use Webaccess\WCMSLaravelStorageJSON\Repositories\Blocks\JSONBlockArticleRepository;
 use Webaccess\WCMSLaravelStorageJSON\Repositories\Blocks\JSONBlockHTMLRepository;

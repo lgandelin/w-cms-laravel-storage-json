@@ -2,8 +2,8 @@
 
 namespace Webaccess\WCMSLaravelStorageJSON\Repositories;
 
-use CMS\Entities\ArticleCategory;
-use CMS\Repositories\ArticleCategoryRepositoryInterface;
+use Webaccess\WCMSCore\Entities\ArticleCategory;
+use Webaccess\WCMSCore\Repositories\ArticleCategoryRepositoryInterface;
 
 class JSONArticleCategoryRepository implements ArticleCategoryRepositoryInterface
 {

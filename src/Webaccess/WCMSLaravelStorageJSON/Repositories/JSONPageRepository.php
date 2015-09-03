@@ -2,8 +2,8 @@
 
 namespace Webaccess\WCMSLaravelStorageJSON\Repositories;
 
-use CMS\Entities\Page;
-use CMS\Repositories\PageRepositoryInterface;
+use Webaccess\WCMSCore\Entities\Page;
+use Webaccess\WCMSCore\Repositories\PageRepositoryInterface;
 
 class JSONPageRepository implements PageRepositoryInterface
 {

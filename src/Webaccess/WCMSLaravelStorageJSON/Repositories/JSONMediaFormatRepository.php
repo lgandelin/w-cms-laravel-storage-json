@@ -2,8 +2,8 @@
 
 namespace Webaccess\WCMSLaravelStorageJSON\Repositories;
 
-use CMS\Entities\MediaFormat;
-use CMS\Repositories\MediaFormatRepositoryInterface;
+use Webaccess\WCMSCore\Entities\MediaFormat;
+use Webaccess\WCMSCore\Repositories\MediaFormatRepositoryInterface;
 
 class JSONMediaFormatRepository implements MediaFormatRepositoryInterface
 {

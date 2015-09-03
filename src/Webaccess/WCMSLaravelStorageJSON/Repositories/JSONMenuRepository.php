@@ -2,8 +2,8 @@
 
 namespace Webaccess\WCMSLaravelStorageJSON\Repositories;
 
-use CMS\Entities\Menu;
-use CMS\Repositories\MenuRepositoryInterface;
+use Webaccess\WCMSCore\Entities\Menu;
+use Webaccess\WCMSCore\Repositories\MenuRepositoryInterface;
 
 class JSONMenuRepository implements MenuRepositoryInterface
 {

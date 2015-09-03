@@ -2,7 +2,7 @@
 
 namespace Webaccess\WCMSLaravelStorageJSON\Repositories\Blocks;
 
-use CMS\Entities\Blocks\MenuBlock;
+use Webaccess\WCMSCore\Entities\Blocks\MenuBlock;
 
 class JSONBlockMenuRepository
 {
