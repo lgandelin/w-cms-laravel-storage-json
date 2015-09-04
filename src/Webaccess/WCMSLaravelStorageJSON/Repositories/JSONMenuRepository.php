@@ -2,14 +2,15 @@
 
 namespace Webaccess\WCMSLaravelStorageJSON\Repositories;
 
-use CMS\Entities\Menu;
-use CMS\Repositories\MenuRepositoryInterface;
+use Webaccess\WCMSCore\Entities\Menu;
+use Webaccess\WCMSCore\Repositories\MenuRepositoryInterface;
 
 class JSONMenuRepository implements MenuRepositoryInterface
 {
-    public function __construct()
+    public function __construct($jsonFolder)
     {
-        $this->json = storage_path() . '/w-cms/menus.json';
+        $this->jsonFolder = $jsonFolder;
+        $this->json = $this->jsonFolder . 'menus.json';
         $this->counter = 0;
         $this->menus = [];
 
@@ -103,6 +104,14 @@ class JSONMenuRepository implements MenuRepositoryInterface
 
     private function loadFromJSON()
     {
+        if (!is_dir($this->jsonFolder)) {
+            mkdir($this->jsonFolder);
+        }
+
+        if (!file_exists($this->json)) {
+            file_put_contents($this->json, null);
+        }
+
         $string = file_get_contents($this->json);
         $data = json_decode($string, true);
 

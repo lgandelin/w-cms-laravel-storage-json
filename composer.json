@@ -12,8 +12,8 @@
         "php": ">=5.5.9"
     },
     "autoload": {
-        "psr-0": {
-            "Webaccess\\WCMSLaravelStorageJSON\\": "src/"
+        "psr-4": {
+            "Webaccess\\WCMSLaravelStorageJSON\\": "src/Webaccess/WCMSLaravelStorageJSON"
         }
     },
     "minimum-stability": "dev"
