@@ -151,15 +151,18 @@ class JSONBlockRepository implements BlockRepositoryInterface
 
             if (is_array($blocks) && sizeof($blocks) > 0) {
                 foreach ($blocks as $blockData) {
-                    $block = Context::get('block_' . $blockData['type'])->getBlock($blockData);
-                    foreach ($blockData as $property => $value) {
-                        $method = 'set' . ucfirst(str_replace('_', '', $property));
-                        if (is_callable(array($block, $method))) {
-                            $block->$method($value);
+                    try {
+                        $block = Context::get('block_' . $blockData['type'] . '_repository')->getBlock($blockData);
+                        foreach ($blockData as $property => $value) {
+                            $method = 'set' . ucfirst(str_replace('_', '', $property));
+                            if (is_callable(array($block, $method))) {
+                                $block->$method($value);
+                            }
                         }
+                        $this->blocks[] = $block;
+                    } catch (\Exception $e) {
+                        dd($e->getMessage());
                     }
-
-                    $this->blocks[] = $block;
                 }
             }
         }
