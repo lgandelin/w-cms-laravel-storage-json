@@ -4,12 +4,6 @@ namespace Webaccess\WCMSLaravelStorageJSON;
 
 use Illuminate\Support\ServiceProvider;
 use Webaccess\WCMSCore\Context;
-use Webaccess\WCMSLaravelStorageJSON\Repositories\Blocks\JSONBlockArticleListRepository;
-use Webaccess\WCMSLaravelStorageJSON\Repositories\Blocks\JSONBlockArticleRepository;
-use Webaccess\WCMSLaravelStorageJSON\Repositories\Blocks\JSONBlockHTMLRepository;
-use Webaccess\WCMSLaravelStorageJSON\Repositories\Blocks\JSONBlockMediaRepository;
-use Webaccess\WCMSLaravelStorageJSON\Repositories\Blocks\JSONBlockMenuRepository;
-use Webaccess\WCMSLaravelStorageJSON\Repositories\Blocks\JSONBlockViewRepository;
 use Webaccess\WCMSLaravelStorageJSON\Repositories\JSONAreaRepository;
 use Webaccess\WCMSLaravelStorageJSON\Repositories\JSONArticleCategoryRepository;
 use Webaccess\WCMSLaravelStorageJSON\Repositories\JSONArticleRepository;
@@ -44,14 +38,6 @@ class WCMSLaravelStorageJSONServiceProvider extends ServiceProvider {
     {
         //Init repositories
         $jsonFolder = storage_path() . '/w-cms/';
-
-        Context::add('block_html_repository', new JSONBlockHTMLRepository());
-        Context::add('block_menu_repository', new JSONBlockMenuRepository());
-        Context::add('block_article_repository', new JSONBlockArticleRepository());
-        Context::add('block_article_list_repository', new JSONBlockArticleListRepository());
-        Context::add('block_media_repository', new JSONBlockMediaRepository());
-        Context::add('block_view_repository', new JSONBlockViewRepository());
-
         Context::add('page_repository', new JSONPageRepository($jsonFolder));
         Context::add('area_repository', new JSONAreaRepository($jsonFolder));
         Context::add('block_repository', new JSONBlockRepository($jsonFolder));

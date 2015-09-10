@@ -152,7 +152,8 @@ class JSONBlockRepository implements BlockRepositoryInterface
             if (is_array($blocks) && sizeof($blocks) > 0) {
                 foreach ($blocks as $blockData) {
                     try {
-                        $block = Context::get('block_' . $blockData['type'] . '_repository')->getBlock($blockData);
+                        $blockEntity = 'Webaccess\\WCMSCore\\Entities\\Blocks\\' . ucfirst(str_replace('_', '', $blockData['type'])) . 'Block';
+                        $block = new $blockEntity;
                         foreach ($blockData as $property => $value) {
                             $method = 'set' . ucfirst(str_replace('_', '', $property));
                             if (is_callable(array($block, $method))) {
