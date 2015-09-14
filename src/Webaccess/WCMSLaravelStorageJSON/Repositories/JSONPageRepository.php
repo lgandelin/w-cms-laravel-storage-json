@@ -61,9 +61,16 @@ class JSONPageRepository implements PageRepositoryInterface
         return false;
     }
 
-    public function findAll($pageID = null)
+    public function findAll($langID = null)
     {
-        return $this->pages;
+        $pages = [];
+        foreach ($this->pages as $page) {
+            if ($page->getLangID() == $langID) {
+                $pages[]= $page;
+            }
+        }
+        
+        return $pages;
     }
 
     public function findMasterPages()

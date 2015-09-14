@@ -59,7 +59,8 @@ class JSONBlockTypeRepository
                 'id' => $blockType->getID(),
                 'code' => $blockType->getCode(),
                 'name' => $blockType->getName(),
-                'content_view' => $blockType->getContentView(),
+                'back_controller' => $blockType->getBackController(),
+                'back_view' => $blockType->getBackView(),
                 'front_view' => $blockType->getFrontView(),
                 'order' => $blockType->getOrder(),
             ];
