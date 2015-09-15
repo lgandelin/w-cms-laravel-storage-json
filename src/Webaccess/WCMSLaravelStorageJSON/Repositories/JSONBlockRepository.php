@@ -2,6 +2,7 @@
 
 namespace Webaccess\WCMSLaravelStorageJSON\Repositories;
 
+use Webaccess\WCMSCore\Context;
 use Webaccess\WCMSCore\Entities\Block;
 use Webaccess\WCMSCore\Repositories\BlockRepositoryInterface;
 use ReflectionClass;
@@ -122,7 +123,7 @@ class JSONBlockRepository implements BlockRepositoryInterface
 
             $o = new ReflectionClass($block);
             foreach($o->getProperties() as $property) {
-                $method = 'get' . ucfirst(str_replace('_', '', $property->name));
+                $method = 'get' . self::snakeToCamel($property->name);
                 $result[$property->name] = $block->$method();
             }
             $blocks[]= $result;
@@ -151,10 +152,10 @@ class JSONBlockRepository implements BlockRepositoryInterface
             if (is_array($blocks) && sizeof($blocks) > 0) {
                 foreach ($blocks as $blockData) {
                     try {
-                        $blockEntity = 'Webaccess\\WCMSCore\\Entities\\Blocks\\' . ucfirst(str_replace('_', '', $blockData['type'])) . 'Block';
-                        $block = new $blockEntity;
+                        $blockTypeEntity = $this->getBlockTypeEntity($blockData['type']);
+                        $block = new $blockTypeEntity;
                         foreach ($blockData as $property => $value) {
-                            $method = 'set' . ucfirst(str_replace('_', '', $property));
+                            $method = 'set' . self::snakeToCamel($property);
                             if (is_callable(array($block, $method))) {
                                 $block->$method($value);
                             }
@@ -166,5 +167,17 @@ class JSONBlockRepository implements BlockRepositoryInterface
                 }
             }
         }
+    }
+
+    private static function getBlockTypeEntity($code)
+    {
+        $blockType = Context::get('block_type_repository')->getBlockTypeByCode($code);
+
+        return $blockType->getEntity();
+    }
+
+    private static function snakeToCamel($property)
+    {
+        return ucfirst(str_replace('_', '', $property));
     }
 }

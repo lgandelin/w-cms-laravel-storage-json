@@ -59,6 +59,7 @@ class JSONBlockTypeRepository
                 'id' => $blockType->getID(),
                 'code' => $blockType->getCode(),
                 'name' => $blockType->getName(),
+                'entity' => $blockType->getEntity(),
                 'back_controller' => $blockType->getBackController(),
                 'back_view' => $blockType->getBackView(),
                 'front_view' => $blockType->getFrontView(),
@@ -90,7 +91,7 @@ class JSONBlockTypeRepository
                 foreach ($blockTypes as $blockTypeData) {
                     $blockType = new BlockType();
                     foreach ($blockTypeData as $property => $value) {
-                        $method = 'set' . ucfirst(str_replace('_', '', $property));
+                        $method = 'set' . self::snakeToCamel($property);
                         $blockType->$method($value);
                     }
 
@@ -98,5 +99,10 @@ class JSONBlockTypeRepository
                 }
             }
         }
+    }
+
+    private static function snakeToCamel($property)
+    {
+        return ucfirst(str_replace('_', '', $property));
     }
 }
