@@ -3,8 +3,9 @@
 namespace Webaccess\WCMSLaravelStorageJSON\Repositories;
 
 use Webaccess\WCMSCore\Entities\BlockType;
+use Webaccess\WCMSCore\Repositories\BlockTypeRepositoryInterface;
 
-class JSONBlockTypeRepository
+class JSONBlockTypeRepository implements BlockTypeRepositoryInterface
 {
     public function __construct($jsonFolder)
     {
@@ -16,18 +17,8 @@ class JSONBlockTypeRepository
         $this->loadFromJSON();
     }
 
-    public function findAll($structure = false)
+    public function findAll()
     {
-        if ($structure) {
-            $blockTypes = [];
-
-            foreach ($this->blockTypes as $blockType) {
-                $blockTypes[]= $blockType->toStructure();
-            }
-
-            return $blockTypes;
-        }
-
         return $this->blockTypes;
     }
 
@@ -41,10 +32,10 @@ class JSONBlockTypeRepository
         return $this->counter;
     }
 
-    public function getBlockTypeByCode($code, $structure = false) {
+    public function findByCode($code) {
         foreach ($this->blockTypes as $blockType) {
             if ($code == $blockType->getCode()) {
-                return ($structure) ? $blockType->toStructure() : $blockType;
+                return $blockType;
             }
         }
 

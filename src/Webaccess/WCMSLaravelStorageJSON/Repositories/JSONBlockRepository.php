@@ -4,6 +4,7 @@ namespace Webaccess\WCMSLaravelStorageJSON\Repositories;
 
 use Webaccess\WCMSCore\Context;
 use Webaccess\WCMSCore\Entities\Block;
+use Webaccess\WCMSCore\Interactors\BlockTypes\GetBlockTypeInteractor;
 use Webaccess\WCMSCore\Repositories\BlockRepositoryInterface;
 use ReflectionClass;
 
@@ -171,7 +172,7 @@ class JSONBlockRepository implements BlockRepositoryInterface
 
     private static function getBlockTypeEntity($code)
     {
-        $blockType = Context::get('block_type_repository')->getBlockTypeByCode($code);
+        $blockType = (new GetBlockTypeInteractor())->getBlockTypeByCode($code);
 
         return $blockType->getEntity();
     }

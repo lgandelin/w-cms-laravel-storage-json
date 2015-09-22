@@ -28,16 +28,27 @@ class JSONThemeRepository implements ThemeRepositoryInterface
         return false;
     }
 
+    public function findByIdentifier($themeIdentifier)
+    {
+        foreach ($this->themes as $theme) {
+            if ($themeIdentifier == $theme->getIdentifier()) {
+                return $theme;
+            }
+        }
+
+        return false;
+    }
+
     public function findAll()
     {
         return $this->themes;
     }
 
-    public function findSelectedThemeIdentifier()
+    public function findSelectedTheme()
     {
         foreach ($this->themes as $theme) {
             if ($theme->getIsSelected()) {
-                return $theme->getIdentifier();
+                return $theme;
             }
         }
 
