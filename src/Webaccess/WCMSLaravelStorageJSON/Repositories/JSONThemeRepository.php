@@ -76,6 +76,17 @@ class JSONThemeRepository implements ThemeRepositoryInterface
         $this->writeToJSON();
     }
 
+    public function deleteTheme($themeID)
+    {
+        foreach ($this->themes as $i => $themeJSON) {
+            if ($themeJSON->getID() == $themeID) {
+                unset($this->themes[$i]);
+            }
+        }
+
+        $this->writeToJSON();
+    }
+
     private function writeToJSON()
     {
         $themes = [];

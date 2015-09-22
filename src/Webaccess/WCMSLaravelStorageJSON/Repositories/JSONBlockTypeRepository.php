@@ -22,6 +22,16 @@ class JSONBlockTypeRepository implements BlockTypeRepositoryInterface
         return $this->blockTypes;
     }
 
+    public function findByCode($code) {
+        foreach ($this->blockTypes as $blockType) {
+            if ($code == $blockType->getCode()) {
+                return $blockType;
+            }
+        }
+
+        return false;
+    }
+
     public function createBlockType(BlockType $blockType)
     {
         $this->counter++;
@@ -32,14 +42,15 @@ class JSONBlockTypeRepository implements BlockTypeRepositoryInterface
         return $this->counter;
     }
 
-    public function findByCode($code) {
-        foreach ($this->blockTypes as $blockType) {
-            if ($code == $blockType->getCode()) {
-                return $blockType;
+    public function deleteBlockType($blockTypeID)
+    {
+        foreach ($this->blockTypes as $i => $blockTypeJSON) {
+            if ($blockTypeJSON->getID() == $blockTypeID) {
+                unset($this->blockTypes[$i]);
             }
         }
 
-        return false;
+        $this->writeToJSON();
     }
 
     private function writeToJSON()
