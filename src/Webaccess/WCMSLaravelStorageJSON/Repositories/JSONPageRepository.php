@@ -124,6 +124,7 @@ class JSONPageRepository implements PageRepositoryInterface
                 'meta_title' => $page->getMetaTitle(),
                 'meta_description' => $page->getMetaDescription(),
                 'meta_keywords' => $page->getMetaKeywords(),
+                'is_indexed' => $page->getIsIndexed(),
             ];
         }
 
@@ -158,6 +159,7 @@ class JSONPageRepository implements PageRepositoryInterface
                     $page->setMetaTitle($pageData['meta_title']);
                     $page->setMetaDescription($pageData['meta_description']);
                     $page->setMetaKeywords($pageData['meta_keywords']);
+                    $page->setIsIndexed($pageData['is_indexed']);
 
                     $this->pages[] = $page;
                 }

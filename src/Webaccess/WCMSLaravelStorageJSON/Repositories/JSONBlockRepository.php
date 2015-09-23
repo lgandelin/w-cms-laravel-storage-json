@@ -2,7 +2,6 @@
 
 namespace Webaccess\WCMSLaravelStorageJSON\Repositories;
 
-use Webaccess\WCMSCore\Context;
 use Webaccess\WCMSCore\Entities\Block;
 use Webaccess\WCMSCore\Interactors\BlockTypes\GetBlockTypeInteractor;
 use Webaccess\WCMSCore\Repositories\BlockRepositoryInterface;
