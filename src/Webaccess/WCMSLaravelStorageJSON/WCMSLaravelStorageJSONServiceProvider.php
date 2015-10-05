@@ -38,6 +38,8 @@ class WCMSLaravelStorageJSONServiceProvider extends ServiceProvider {
     {
         //Init repositories
         $jsonFolder = storage_path() . '/w-cms/';
+
+        Context::add('block_type_repository', new JSONBlockTypeRepository($jsonFolder));
         Context::add('page_repository', new JSONPageRepository($jsonFolder));
         Context::add('area_repository', new JSONAreaRepository($jsonFolder));
         Context::add('block_repository', new JSONBlockRepository($jsonFolder));
@@ -49,7 +51,6 @@ class WCMSLaravelStorageJSONServiceProvider extends ServiceProvider {
         Context::add('article_repository', new JSONArticleRepository($jsonFolder));
         Context::add('user_repository', new JSONUserRepository($jsonFolder));
         Context::add('article_category_repository', new JSONArticleCategoryRepository($jsonFolder));
-        Context::add('block_type_repository', new JSONBlockTypeRepository($jsonFolder));
         Context::add('theme_repository', new JSONThemeRepository($jsonFolder));
     }
 }

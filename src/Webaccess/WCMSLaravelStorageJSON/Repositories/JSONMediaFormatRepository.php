@@ -74,6 +74,7 @@ class JSONMediaFormatRepository implements MediaFormatRepositoryInterface
                 'name' => $mediaFormat->getName(),
                 'width' => $mediaFormat->getWidth(),
                 'height' => $mediaFormat->getHeight(),
+                'preserve_ratio' => $mediaFormat->getPreserveRatio(),
             ];
         }
 

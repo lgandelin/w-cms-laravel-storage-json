@@ -3,8 +3,9 @@
 namespace Webaccess\WCMSLaravelStorageJSON\Repositories;
 
 use Webaccess\WCMSCore\Entities\BlockType;
+use Webaccess\WCMSCore\Repositories\BlockTypeRepositoryInterface;
 
-class JSONBlockTypeRepository
+class JSONBlockTypeRepository implements BlockTypeRepositoryInterface
 {
     public function __construct($jsonFolder)
     {
@@ -16,19 +17,19 @@ class JSONBlockTypeRepository
         $this->loadFromJSON();
     }
 
-    public function findAll($structure = false)
+    public function findAll()
     {
-        if ($structure) {
-            $blockTypes = [];
+        return $this->blockTypes;
+    }
 
-            foreach ($this->blockTypes as $blockType) {
-                $blockTypes[]= $blockType->toStructure();
+    public function findByCode($code) {
+        foreach ($this->blockTypes as $blockType) {
+            if ($code == $blockType->getCode()) {
+                return $blockType;
             }
-
-            return $blockTypes;
         }
 
-        return $this->blockTypes;
+        return false;
     }
 
     public function createBlockType(BlockType $blockType)
@@ -41,14 +42,15 @@ class JSONBlockTypeRepository
         return $this->counter;
     }
 
-    public function getBlockTypeByCode($code, $structure = false) {
-        foreach ($this->blockTypes as $blockType) {
-            if ($code == $blockType->getCode()) {
-                return ($structure) ? $blockType->toStructure() : $blockType;
+    public function deleteBlockType($blockTypeID)
+    {
+        foreach ($this->blockTypes as $i => $blockTypeJSON) {
+            if ($blockTypeJSON->getID() == $blockTypeID) {
+                unset($this->blockTypes[$i]);
             }
         }
 
-        return false;
+        $this->writeToJSON();
     }
 
     private function writeToJSON()
@@ -59,8 +61,10 @@ class JSONBlockTypeRepository
                 'id' => $blockType->getID(),
                 'code' => $blockType->getCode(),
                 'name' => $blockType->getName(),
+                'entity' => $blockType->getEntity(),
                 'back_controller' => $blockType->getBackController(),
                 'back_view' => $blockType->getBackView(),
+                'front_controller' => $blockType->getFrontController(),
                 'front_view' => $blockType->getFrontView(),
                 'order' => $blockType->getOrder(),
             ];
@@ -90,7 +94,7 @@ class JSONBlockTypeRepository
                 foreach ($blockTypes as $blockTypeData) {
                     $blockType = new BlockType();
                     foreach ($blockTypeData as $property => $value) {
-                        $method = 'set' . ucfirst(str_replace('_', '', $property));
+                        $method = 'set' . self::snakeToCamel($property);
                         $blockType->$method($value);
                     }
 
@@ -98,5 +102,10 @@ class JSONBlockTypeRepository
                 }
             }
         }
+    }
+
+    private static function snakeToCamel($property)
+    {
+        return ucfirst(str_replace('_', '', $property));
     }
 }
