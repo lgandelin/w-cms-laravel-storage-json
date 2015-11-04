@@ -56,6 +56,22 @@ class JSONBlockRepository implements BlockRepositoryInterface
         return [];
     }
 
+    public function findByAreaIDAndVersionNumber($areaID, $versionNumber)
+    {
+        $blocks = [];
+        foreach ($this->blocks as $block) {
+            if ($areaID == $block->getAreaID() && $block->getVersionNumber() == $versionNumber) {
+                $blocks[]= $block;
+            }
+        }
+
+        usort($blocks, function($a, $b) {
+            return ($a->getOrder() < $b->getOrder()) ? -1 : 1;
+        });
+
+        return $blocks;
+    }
+
     public function findAll()
     {
         return $this->blocks;
@@ -93,6 +109,16 @@ class JSONBlockRepository implements BlockRepositoryInterface
         $this->writeToJSON();
     }
 
+    public function duplicateBlock(Block $block)
+    {
+        $this->counter++;
+        $block->setID($this->counter);
+        $this->blocks[]= $block;
+        $this->writeToJSON();
+
+        return $this->counter;
+    }
+
     public function deleteBlock($blockID)
     {
         foreach ($this->blocks as $i => $blockJSON) {
@@ -119,8 +145,8 @@ class JSONBlockRepository implements BlockRepositoryInterface
                 'type' => $block->getType(),
                 'display' => $block->getDisplay(),
                 'area_id' => $block->getAreaID(),
+                'version_number' => $block->getVersionNumber(),
             ];
-
             $o = new ReflectionClass($block);
             foreach($o->getProperties() as $property) {
                 $method = 'get' . self::snakeToCamel($property->name);

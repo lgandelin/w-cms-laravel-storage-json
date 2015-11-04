@@ -121,6 +121,8 @@ class JSONPageRepository implements PageRepositoryInterface
                 'identifier' => $page->getIdentifier(),
                 'uri' => $page->getUri(),
                 'lang_id' => $page->getLangID(),
+                'version_id' => $page->getVersionID(),
+                'draft_version_id' => $page->getDraftVersionID(),
                 'meta_title' => $page->getMetaTitle(),
                 'meta_description' => $page->getMetaDescription(),
                 'meta_keywords' => $page->getMetaKeywords(),
@@ -157,6 +159,8 @@ class JSONPageRepository implements PageRepositoryInterface
                     $page->setIdentifier($pageData['identifier']);
                     $page->setUri($pageData['uri']);
                     $page->setLangID($pageData['lang_id']);
+                    $page->setVersionID($pageData['version_id']);
+                    $page->setDraftVersionID($pageData['draft_version_id']);
                     $page->setMetaTitle($pageData['meta_title']);
                     $page->setMetaDescription($pageData['meta_description']);
                     $page->setMetaKeywords($pageData['meta_keywords']);
