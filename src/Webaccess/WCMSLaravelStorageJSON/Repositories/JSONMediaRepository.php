@@ -33,6 +33,19 @@ class JSONMediaRepository implements MediaRepositoryInterface
         return $this->medias;
     }
 
+    public function findAllByMediaFolderID($mediaFolderID)
+    {
+        $medias = [];
+        foreach ($this->medias as $media) {
+            if ($media->getMediaFolderID() == $mediaFolderID) {
+                $medias[]= $media;
+            }
+        }
+
+        return $medias;
+    }
+
+
     public function createMedia(Media $media)
     {
         $this->counter++;
