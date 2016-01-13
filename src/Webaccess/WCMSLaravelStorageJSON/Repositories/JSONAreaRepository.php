@@ -44,6 +44,22 @@ class JSONAreaRepository implements AreaRepositoryInterface
         return $areas;
     }
 
+    public function findByPageIDAndVersionNumber($pageID, $versionNumber)
+    {
+        $areas = [];
+        foreach ($this->areas as $area) {
+            if ($pageID == $area->getPageID() && $area->getVersionNumber() == $versionNumber) {
+                $areas[]= $area;
+            }
+        }
+
+        usort($areas, function($a, $b) {
+            return ($a->getOrder() < $b->getOrder()) ? -1 : 1;
+        });
+
+        return $areas;
+    }
+
     public function findAll()
     {
         return $this->areas;
@@ -99,6 +115,7 @@ class JSONAreaRepository implements AreaRepositoryInterface
                 'order' => $area->getOrder(),
                 'display' => $area->getDisplay(),
                 'page_id' => $area->getPageID(),
+                'version_number' => $area->getVersionNumber(),
             ];
         }
         file_put_contents($this->json, json_encode([$this->counter, $areas]));
@@ -132,6 +149,7 @@ class JSONAreaRepository implements AreaRepositoryInterface
                     $area->setOrder($areaData['order']);
                     $area->setDisplay($areaData['display']);
                     $area->setPageID($areaData['page_id']);
+                    $area->setVersionNumber($areaData['version_number']);
 
                     $this->areas[] = $area;
                 }
