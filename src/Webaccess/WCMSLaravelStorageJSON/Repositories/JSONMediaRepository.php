@@ -33,6 +33,19 @@ class JSONMediaRepository implements MediaRepositoryInterface
         return $this->medias;
     }
 
+    public function findAllByMediaFolderID($mediaFolderID)
+    {
+        $medias = [];
+        foreach ($this->medias as $media) {
+            if ($media->getMediaFolderID() == $mediaFolderID) {
+                $medias[]= $media;
+            }
+        }
+
+        return $medias;
+    }
+
+
     public function createMedia(Media $media)
     {
         $this->counter++;
@@ -75,10 +88,15 @@ class JSONMediaRepository implements MediaRepositoryInterface
                 'file_name' => $media->getFileName(),
                 'alt' => $media->getAlt(),
                 'title' => $media->getTitle(),
+                'mediaFolderID' => $media->getMediaFolderID(),
             ];
         }
 
-        file_put_contents($this->json, json_encode([$this->counter, $medias]));
+        $fp = fopen($this->json, "w+");
+        if (flock($fp, LOCK_EX)) {
+            file_put_contents($this->json, json_encode([$this->counter, $medias]));
+        }
+        fclose($fp);
     }
 
     private function loadFromJSON()
