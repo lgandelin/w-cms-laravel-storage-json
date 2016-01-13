@@ -10,6 +10,7 @@ use Webaccess\WCMSLaravelStorageJSON\Repositories\JSONArticleRepository;
 use Webaccess\WCMSLaravelStorageJSON\Repositories\JSONBlockRepository;
 use Webaccess\WCMSLaravelStorageJSON\Repositories\JSONBlockTypeRepository;
 use Webaccess\WCMSLaravelStorageJSON\Repositories\JSONLangRepository;
+use Webaccess\WCMSLaravelStorageJSON\Repositories\JSONMediaFolderRepository;
 use Webaccess\WCMSLaravelStorageJSON\Repositories\JSONMediaFormatRepository;
 use Webaccess\WCMSLaravelStorageJSON\Repositories\JSONMediaRepository;
 use Webaccess\WCMSLaravelStorageJSON\Repositories\JSONMenuItemRepository;
@@ -49,6 +50,7 @@ class WCMSLaravelStorageJSONServiceProvider extends ServiceProvider {
         Context::add('menu_item_repository', new JSONMenuItemRepository($jsonFolder));
         Context::add('media_repository', new JSONMediaRepository($jsonFolder));
         Context::add('media_format_repository', new JSONMediaFormatRepository($jsonFolder));
+        Context::add('media_folder_repository', new JSONMediaFolderRepository($jsonFolder));
         Context::add('article_repository', new JSONArticleRepository($jsonFolder));
         Context::add('user_repository', new JSONUserRepository($jsonFolder));
         Context::add('article_category_repository', new JSONArticleCategoryRepository($jsonFolder));
